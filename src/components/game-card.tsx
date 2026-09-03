@@ -25,12 +25,10 @@ export function GameCard({ game }: { game: RobloxGame }) {
       <div className="mt-1.5 line-clamp-2 text-sm font-bold leading-tight text-foreground">
         {game.name}
       </div>
-      <div className="mt-1 flex items-center gap-3 text-xs font-semibold text-muted-foreground">
-        {likes !== null ? <span>{likes}% Likes</span> : null}
+      <div className="mt-1 flex items-center gap-2.5 text-xs font-semibold text-muted-foreground">
+        {likes !== null ? <span>{likes}%</span> : null}
         <span>{compact(game.playerCount)}</span>
-      </div>
-      <div className="text-xs font-semibold text-muted-foreground">
-        {participants(game.universeId)} in
+        <span>{participants(game.universeId)}</span>
       </div>
     </Link>
   );
