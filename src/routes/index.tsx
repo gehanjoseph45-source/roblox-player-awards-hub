@@ -3,9 +3,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 
+import { Countdown } from "@/components/countdown";
 import { GameCard } from "@/components/game-card";
+import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getGameSections, searchGames } from "@/lib/roblox.functions";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
