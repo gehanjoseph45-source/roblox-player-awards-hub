@@ -25,7 +25,7 @@ export const Route = createFileRoute("/game/$universeId")({
       },
     ],
   }),
-  component: GameDetail;
+  component: GameDetail,
 });
 
 function GameDetail() {
