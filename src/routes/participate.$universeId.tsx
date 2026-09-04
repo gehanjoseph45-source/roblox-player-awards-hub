@@ -8,7 +8,7 @@ import { getEmbedUrl, normalizeUrl } from "@/lib/account";
 
 export const Route = createFileRoute("/participate/$universeId")({
   validateSearch: (search: Record<string, unknown>) => ({
-    site: typeof search.site === "string" ? search.site : undefined,
+    site: typeof search["site"] === "string" ? search["site"] : undefined,
   }),
   head: () => ({
     meta: [
@@ -41,7 +41,7 @@ function Participate() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <SiteHeader site={site} />
+      {site ? <SiteHeader site={site} /> : <SiteHeader />}
 
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-3">
         <Link

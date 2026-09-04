@@ -99,6 +99,7 @@ function GameDetail() {
                 <Link
                   to="/participate/$universeId"
                   params={{ universeId }}
+                  search={{ site: undefined }}
                   className="mt-4 block w-full rounded-md bg-primary py-3 text-center text-sm font-bold text-primary-foreground"
                 >
                   Participate
