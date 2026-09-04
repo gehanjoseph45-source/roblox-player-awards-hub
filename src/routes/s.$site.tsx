@@ -5,16 +5,16 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getGameSections } from "@/lib/roblox.functions";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/s/$site")({
   head: () => ({
     meta: [
-      { title: "Roblox Player Awards — Enter Award Rounds by Game" },
+      { title: "Player Awards — Award Rounds by Game" },
       {
         name: "description",
         content:
-          "Browse trending Roblox experiences, check the reward, likes and participant count, and enter the award round for the game you play.",
+          "Browse trending Roblox experiences, check the reward, likes and participant count, and enter this award website's rounds.",
       },
-      { property: "og:title", content: "Roblox Player Awards" },
+      { property: "og:title", content: "Player Awards" },
       {
         property: "og:description",
         content: "Pick a game, see the reward and participants, then enter the award round.",
@@ -26,14 +26,16 @@ export const Route = createFileRoute("/")({
       queryKey: ["sections"],
       queryFn: () => getGameSections(),
     }),
-  component: Home,
+  component: SiteHome,
 });
 
-function Home() {
+function SiteHome() {
+  const { site } = Route.useParams();
+
   return (
     <div className="min-h-screen bg-background">
-      <SiteHeader />
-      <HomeContent />
+      <SiteHeader site={site} />
+      <HomeContent scope={site} />
       <SiteFooter />
     </div>
   );
