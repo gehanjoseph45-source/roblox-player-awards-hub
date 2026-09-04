@@ -119,16 +119,16 @@ function GameDetail() {
 
               <div className="divide-y divide-border">
                 {[
-                  ["🥇", "1ST", "50K ROBUX"],
-                  ["🥈", "2ND", "25K ROBUX"],
-                  ["🥉", "3RD", "15K ROBUX"],
-                  ["🏅", "4TH", "10K ROBUX"],
-                  ["🎖️", "5TH", "7.5K ROBUX"],
-                  ["⭐", "6TH", "5K ROBUX"],
-                  ["✨", "7TH", "3K ROBUX"],
-                  ["💎", "8TH", "2K ROBUX"],
-                  ["🎁", "9TH", "1.5K ROBUX"],
-                  ["🎉", "10TH", "1K ROBUX"],
+                  ["🥇", "1ST", "50K"],
+                  ["🥈", "2ND", "25K"],
+                  ["🥉", "3RD", "15K"],
+                  ["🏅", "4TH", "10K"],
+                  ["🎖️", "5TH", "7.5K"],
+                  ["⭐", "6TH", "5K"],
+                  ["✨", "7TH", "3K"],
+                  ["💎", "8TH", "2K"],
+                  ["🎁", "9TH", "1.5K"],
+                  ["🎉", "10TH", "1K"],
                 ].map(([emoji, place, amount]) => (
                   <div
                     key={place}
@@ -140,9 +140,18 @@ function GameDetail() {
                         {place}
                       </span>
                     </div>
-                    <span className="text-sm font-extrabold text-primary">
-                      {amount}
-                    </span>
+
+                    <div className="flex items-center gap-2 text-sm font-extrabold text-primary">
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-label="Robux"
+                        className="size-5"
+                        fill="currentColor"
+                      >
+                        <path d="M7.2 3.5 20 7.1v10.8l-12.8 3.6L4 17.8V6.2l3.2-2.7Zm1.5 4.1-1.2 1v7.8l1.2 1 8.3-2.3V10l-8.3-2.4Zm1.1 2.8 5.2 1.5v2.2l-5.2 1.4v-5.1Z" />
+                      </svg>
+                      <span>{amount}</span>
+                    </div>
                   </div>
                 ))}
               </div>
