@@ -32,6 +32,7 @@ function Participate() {
   const { site } = Route.useSearch();
   const [ready, setReady] = useState(false);
   const [embed, setEmbed] = useState("");
+  const [redirecting, setRedirecting] = useState(false);
 
   useEffect(() => {
     setEmbed(normalizeUrl(getEmbedUrl(site ?? "")));
@@ -72,14 +73,44 @@ function Participate() {
             </p>
           </div>
         ) : (
-          <div className="overflow-hidden rounded-md border border-border bg-card">
-            <iframe
-              src={embed}
-              title="Award round entry"
-              className="h-[calc(100vh-120px)] min-h-[640px] w-full border-0"
-              allow="clipboard-write; fullscreen; payment; camera; microphone; geolocation"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div className="flex min-h-[520px] items-center justify-center rounded-lg border border-border bg-card px-6">
+            <div className="max-w-md text-center">
+              {redirecting ? (
+                <>
+                  <div className="mx-auto mb-5 size-10 animate-spin rounded-full border-4 border-muted border-t-primary" />
+                  <h1 className="text-xl font-extrabold text-foreground">
+                    Loading your entry…
+                  </h1>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Please wait while we take you to the award entry page.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-primary/10 text-3xl">
+                    🏆
+                  </div>
+                  <h1 className="mt-5 text-xl font-extrabold text-foreground">
+                    Ready to enter?
+                  </h1>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Your award entry page is ready. Tap below to continue.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setRedirecting(true);
+                      setTimeout(() => {
+                        window.location.href = embed;
+                      }, 900);
+                    }}
+                    className="mt-6 w-full rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
+                  >
+                    Continue to Entry
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         )}
 

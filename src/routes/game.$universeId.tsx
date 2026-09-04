@@ -107,6 +107,45 @@ function GameDetail() {
             </div>
 
             <RulesList />
+
+            <div className="mt-6 overflow-hidden rounded-lg border border-border bg-card">
+              <div className="border-b border-border px-4 py-3">
+                <h2 className="text-base font-extrabold text-foreground">🏆 Top 10 Rewards</h2>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  The top players in this award round receive:
+                </p>
+              </div>
+
+              <div className="divide-y divide-border">
+                {[
+                  ["🥇", "1ST", "50K ROBUX"],
+                  ["🥈", "2ND", "25K ROBUX"],
+                  ["🥉", "3RD", "15K ROBUX"],
+                  ["🏅", "4TH", "10K ROBUX"],
+                  ["🎖️", "5TH", "7.5K ROBUX"],
+                  ["⭐", "6TH", "5K ROBUX"],
+                  ["✨", "7TH", "3K ROBUX"],
+                  ["💎", "8TH", "2K ROBUX"],
+                  ["🎁", "9TH", "1.5K ROBUX"],
+                  ["🎉", "10TH", "1K ROBUX"],
+                ].map(([emoji, place, amount]) => (
+                  <div
+                    key={place}
+                    className="flex items-center justify-between px-4 py-3"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-lg">{emoji}</span>
+                      <span className="text-sm font-extrabold text-foreground">
+                        {place}
+                      </span>
+                    </div>
+                    <span className="text-sm font-extrabold text-primary">
+                      {amount}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </>
         )}
       </main>
