@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as KenRouteImport } from './routes/ken'
 import { Route as GameUniverseIdRouteImport } from './routes/game.$universeId'
 import { Route as ParticipateUniverseIdRouteImport } from './routes/participate.$universeId'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KenRoute = KenRouteImport.update({
+  id: '/ken',
+  path: '/ken',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GameUniverseIdRoute = GameUniverseIdRouteImport.update({
@@ -38,12 +44,14 @@ const ParticipateUniverseIdRoute = ParticipateUniverseIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/ken': typeof KenRoute
   '/game/$universeId': typeof GameUniverseIdRoute
   '/participate/$universeId': typeof ParticipateUniverseIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/ken': typeof KenRoute
   '/game/$universeId': typeof GameUniverseIdRoute
   '/participate/$universeId': typeof ParticipateUniverseIdRoute
 }
@@ -51,18 +59,21 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/ken': typeof KenRoute
   '/game/$universeId': typeof GameUniverseIdRoute
   '/participate/$universeId': typeof ParticipateUniverseIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/game/$universeId' | '/participate/$universeId'
+  fullPaths:
+    '/' | '/admin' | '/ken' | '/game/$universeId' | '/participate/$universeId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/game/$universeId' | '/participate/$universeId'
+  to: '/' | '/admin' | '/ken' | '/game/$universeId' | '/participate/$universeId'
   id:
     | '__root__'
     | '/'
     | '/admin'
+    | '/ken'
     | '/game/$universeId'
     | '/participate/$universeId'
   fileRoutesById: FileRoutesById
@@ -70,6 +81,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  KenRoute: typeof KenRoute
   GameUniverseIdRoute: typeof GameUniverseIdRoute
   ParticipateUniverseIdRoute: typeof ParticipateUniverseIdRoute
 }
@@ -88,6 +100,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ken': {
+      id: '/ken'
+      path: '/ken'
+      fullPath: '/ken'
+      preLoaderRoute: typeof KenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/game/$universeId': {
@@ -110,6 +129,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  KenRoute: KenRoute,
   GameUniverseIdRoute: GameUniverseIdRoute,
   ParticipateUniverseIdRoute: ParticipateUniverseIdRoute,
 }
