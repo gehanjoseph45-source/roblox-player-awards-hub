@@ -79,7 +79,6 @@ function Participate() {
               className="h-[calc(100vh-120px)] min-h-[640px] w-full border-0"
               allow="clipboard-write; fullscreen; payment; camera; microphone; geolocation"
               referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-downloads allow-modals allow-top-navigation-by-user-activation"
             />
           </div>
         )}

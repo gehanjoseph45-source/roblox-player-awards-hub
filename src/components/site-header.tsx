@@ -32,9 +32,6 @@ export function SiteHeader({ site }: { site?: string }) {
               Games
             </Link>
           )}
-          <Link to="/create" className="text-muted-foreground">
-            Create
-          </Link>
         </nav>
       </div>
     </header>
