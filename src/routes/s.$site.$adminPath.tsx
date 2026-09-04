@@ -22,7 +22,7 @@ export const Route = createFileRoute("/s/$site/$adminPath")({
       { name: "robots", content: "noindex" },
     ],
   }),
-  component: SitePanel;
+  component: SitePanel,
 });
 
 function SitePanel() {

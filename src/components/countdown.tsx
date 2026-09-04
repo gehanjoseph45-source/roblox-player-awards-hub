@@ -12,15 +12,15 @@ function parts(ms: number) {
   };
 }
 
-export function Countdown() {
+export function Countdown({ scope = "" }: { scope?: string }) {
   const [target, setTarget] = useState<number | null>(null);
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
-    setTarget(getDeadline());
+    setTarget(getDeadline(scope));
     const id = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [scope]);
 
   const p = parts(target ? target - now : 0);
   const cells = [

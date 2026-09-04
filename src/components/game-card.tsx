@@ -3,13 +3,14 @@ import { Link } from "@tanstack/react-router";
 import { compact, likePercent, participants } from "@/lib/awards";
 import type { RobloxGame } from "@/lib/roblox.functions";
 
-export function GameCard({ game }: { game: RobloxGame }) {
+export function GameCard({ game, site = "" }: { game: RobloxGame; site?: string }) {
   const likes = likePercent(game.upVotes, game.downVotes);
 
   return (
     <Link
       to="/game/$universeId"
       params={{ universeId: String(game.universeId) }}
+      search={site ? { site } : {}}
       className="block w-36 shrink-0 sm:w-44"
     >
       <div className="aspect-square w-full overflow-hidden rounded-lg border border-border bg-muted">
