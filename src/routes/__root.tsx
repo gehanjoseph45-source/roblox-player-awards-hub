@@ -15,25 +15,52 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+      <div className="w-full max-w-md text-center">
+        <div className="mx-auto flex size-20 items-center justify-center rounded-2xl border border-border bg-card text-4xl shadow-sm">
+          🏆
+        </div>
+
+        <p className="mt-6 text-xs font-extrabold uppercase tracking-[0.2em] text-primary">
+          Roblox Player Awards
         </p>
-        <div className="mt-6">
+
+        <h1 className="mt-2 text-6xl font-black tracking-tight text-foreground">
+          404
+        </h1>
+
+        <h2 className="mt-3 text-xl font-extrabold text-foreground">
+          Award round not found
+        </h2>
+
+        <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-muted-foreground">
+          Looks like this page doesn't exist. It may have been removed,
+          expired, or the link may be incorrect.
+        </p>
+
+        <div className="mt-7 flex flex-col gap-2 sm:flex-row sm:justify-center">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-5 py-3 text-sm font-extrabold text-primary-foreground transition-opacity hover:opacity-90"
           >
-            Go home
+            🏠 Back to Games
           </Link>
+
+          <button
+            type="button"
+            onClick={() => window.history.back()}
+            className="inline-flex items-center justify-center rounded-md border border-border bg-card px-5 py-3 text-sm font-bold text-foreground transition-colors hover:bg-muted"
+          >
+            ← Go Back
+          </button>
         </div>
+
+        <p className="mt-8 text-[11px] font-semibold text-muted-foreground">
+          Roblox Player Awards • Official Award Hub
+        </p>
       </div>
     </div>
   );
 }
-
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
